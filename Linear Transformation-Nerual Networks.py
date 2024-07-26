@@ -117,23 +117,11 @@ Y = np.array(df['y']).reshape(1,-1)
 parameters = nn_model(X,Y, num_iterations = 5000, print_cost= True)
 
 
-# ## 4 - Make your predictions!
+#Make predictions
 # 
-# Now that you have the fitted parameters, you are able to predict any value with your neural network! You just need to perform the following computation:
-# 
-# $$ Z = W X + b$$ 
-# 
-# Where $W$ and $b$ are in the parameters dictionary.
-# 
-# <a name="ex07"></a>
-# ### Exercise 7
-# 
-# Now you will make the predictor function. It will input a parameters dictionary, a set of points X and output the set of predicted values. 
-
-# In[104]:
-
-
-# GRADED FUNCTION: predict
+# Now that we have the fitted parameters, we are able to predict any value with our neural network by performing the following computation:
+# Z = W X + b 
+# Where W and b are in the parameters dictionary.
 
 def predict(X, parameters):
 
@@ -144,26 +132,12 @@ def predict(X, parameters):
 
     return Z
 
-
-# In[105]:
-
-
 y_hat = predict(X,parameters)
-
-
-# In[106]:
-
-
 df['y_hat'] = y_hat[0]
 
 
 # Now let's check some predicted values versus the original ones:
-
-# In[107]:
-
-
 for i in range(10):
     print(f"(x1,x2) = ({df.loc[i,'x1']:.2f}, {df.loc[i,'x2']:.2f}): Actual value: {df.loc[i,'y']:.2f}. Predicted value: {df.loc[i,'y_hat']:.2f}")
 
-
-# Pretty good, right? Congratulations! You have finished the W3 assignment!
+# See, the machine learning model do a pretty good job.
