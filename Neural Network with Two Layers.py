@@ -102,7 +102,6 @@ print("The size of the output layer is: n_y = " + str(n_y))
 # 这里的初始化，主要是初始化 W， b，而且重点是给定这两者Shape，因为X和Y的shape是来源于dataset是固定的，我们的w，b是任意形状，因此要去和X，Y形状匹配
 # 匹配是指运算 W * X，则 W（n，nx）和 X（Xn x m)对应， b （1 x m）和 Y（1 x m）对应
 
-# GRADED FUNCTION: initialize_parameters
 
 def initialize_parameters(n_x, n_h, n_y):
     """
@@ -137,9 +136,6 @@ def initialize_parameters(n_x, n_h, n_y):
                   "b2": b2}
     
     return parameters
-
-
-# In[77]:
 
 
 parameters = initialize_parameters(n_x, n_h, n_y)
