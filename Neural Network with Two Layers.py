@@ -12,7 +12,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 np.random.seed(3)
 
 
-# ### 2.2 - Dataset
+#Dataset
 # 
 # First, let's get the dataset you will work on. The following code will create $m=2000$ data points $(x_1, x_2)$ and save them in the `NumPy` array `X` of a shape $(2 \times m)$ (in the columns of the array). The labels ($0$: blue, $1$: red) will be saved in the `NumPy` array `Y` of a shape $(1 \times m)$.
 
