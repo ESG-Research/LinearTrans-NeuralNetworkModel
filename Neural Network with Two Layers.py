@@ -47,7 +47,8 @@ def sigmoid(z):
 # Defining the Neural Network Structure
 ########
 ########**********必须注意，Nureal Network中所说的Layer(层)指的是数据或值的Array，不是指感受器**********##########
-########
+######## (data value)输入层————感受器1————数值1(Hidden层)————感受器2————(Y_hat value)输出层############
+
 # Define three variables:
 # - `n_x`: the size of the input layer 输入层 也就是dataset_array
 # - `n_h`: the size of the hidden layer (set it equal to 2 for 2层神经网络模型）
