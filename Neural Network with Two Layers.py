@@ -95,16 +95,12 @@ print("The size of the output layer is: n_y = " + str(n_y))
 
 # 构建好我们的神经网络模型结构之后，可以开始设置初始化参数。
 # Implement the function `initialize_parameters()`.
-# 
-# **Instructions**:
-# - Make sure your parameters' sizes are right. Refer to the neural network figure above if needed.
 # - You will initialize the weights matrix with random values. 
 #     - Use: `np.random.randn(a,b) * 0.01` to randomly initialize a matrix of shape (a,b).
 # - You will initialize the bias vector as zeros. 
 #     - Use: `np.zeros((a,b))` to initialize a matrix of shape (a,b) with zeros.
-
-# In[45]:
-
+# 这里的初始化，主要是初始化 W， b，而且重点是给定这两者Shape，因为X和Y的shape是来源于dataset是固定的，我们的w，b是任意形状，因此要去和X，Y形状匹配
+# 匹配是指运算 W * X，则 W（n，nx）和 X（Xn x m)对应， b （1 x m）和 Y（1 x m）对应
 
 # GRADED FUNCTION: initialize_parameters
 
