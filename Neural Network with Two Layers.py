@@ -45,7 +45,9 @@ def sigmoid(z):
 
 #首先要确定我们的神经网络模型的结构(几层几级)
 # Defining the Neural Network Structure
-
+########
+########**********必须注意，Nureal Network中所说的Layer(层)指的是数据或值的Array，不是指感受器**********##########
+########
 # Define three variables:
 # - `n_x`: the size of the input layer 输入层 也就是dataset_array
 # - `n_h`: the size of the hidden layer (set it equal to 2 for 2层神经网络模型）
@@ -53,24 +55,7 @@ def sigmoid(z):
 
 # 这里我们使用 shapes of X and Y to find n_x and n_y:
 # the size of the input layer n_x equals to the size of the input vectors placed in the columns of the array X
-# the outpus for each of the data point will be saved in the columns of the the array Y
-
-# <details>    
-# <summary>
-#     <font size="3" color="darkgreen"><b>Hint</b></font>
-# </summary>
-# <p>
-# <ul>
-#     Use shapes of X and Y to find n_x and n_y:
-#     <li>the size of the input layer n_x equals to the size of the input vectors placed in the columns of the array X,</li>
-#     <li>the outpus for each of the data point will be saved in the columns of the the array Y.</li>
-# </ul>
-# </p>
-
-# In[25]:
-
-
-# GRADED FUNCTION: layer_sizes
+# the outpus for each of the data point will be saved in the columns of the the array Y：
 
 def layer_sizes(X, Y):
     """
@@ -83,25 +68,20 @@ def layer_sizes(X, Y):
     n_h -- the size of the hidden layer
     n_y -- the size of the output layer
     """
-    ### START CODE HERE ### (~ 3 lines of code)
+  
     # Size of input layer.
     n_x = X.shape[0]
     # Size of hidden layer.
     n_h = 2
     # Size of output layer.
     n_y = Y.shape[0]
-    ### END CODE HERE ###
+
     return (n_x, n_h, n_y)
-
-
-# In[26]:
-
 
 (n_x, n_h, n_y) = layer_sizes(X, Y)
 print("The size of the input layer is: n_x = " + str(n_x))
 print("The size of the hidden layer is: n_h = " + str(n_h))
 print("The size of the output layer is: n_y = " + str(n_y))
-
 
 # ##### __Expected Output__
 # 
@@ -111,18 +91,8 @@ print("The size of the output layer is: n_y = " + str(n_y))
 # The size of the output layer is: n_y = 1
 # ```
 
-# In[27]:
 
-
-w3_unittest.test_layer_sizes(layer_sizes)
-
-
-# <a name='3.2'></a>
-# ### 3.2 - Initialize the Model's Parameters
-
-# <a name='ex03'></a>
-# ### Exercise 3
-# 
+# 构建好我们的神经网络模型结构之后，可以开始设置初始化参数。
 # Implement the function `initialize_parameters()`.
 # 
 # **Instructions**:
