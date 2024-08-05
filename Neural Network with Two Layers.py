@@ -13,12 +13,7 @@ np.random.seed(3)
 
 
 #Dataset
-# 
-# First, let's get the dataset you will work on. The following code will create $m=2000$ data points $(x_1, x_2)$ and save them in the `NumPy` array `X` of a shape $(2 \times m)$ (in the columns of the array). The labels ($0$: blue, $1$: red) will be saved in the `NumPy` array `Y` of a shape $(1 \times m)$.
-
-# In[8]:
-
-
+#我们有一个观测点为2000的dataset
 m = 2000
 samples, labels = make_blobs(n_samples=m, 
                              centers=([2.5, 3], [6.7, 7.9], [2.1, 7.9], [7.4, 2.8]), 
@@ -35,18 +30,8 @@ print ('The shape of X is: ' + str(X.shape))
 print ('The shape of Y is: ' + str(Y.shape))
 print ('I have m = %d training examples!' % (m))
 
-
-# <a name='2.3'></a>
-# ### 2.3 - Define Activation Function
-
-# <a name='ex01'></a>
-# ### Exercise 1
-# 
-# Define sigmoid activation function $\sigma\left(z\right) =\frac{1}{1+e^{-z}} $.
-
-# In[12]:
-
-
+#因为要建立一个Classification 神经网络模型，因此要先设置Active Function，西格玛(Z), Sigmoid(Z)=1/1-e^-z
+#Define Activation Function
 def sigmoid(z):
     ### START CODE HERE ### (~ 1 line of code)
     res = 1/(1+np.exp(-z))
@@ -55,43 +40,20 @@ def sigmoid(z):
     return res
 
 
-# In[13]:
+#在设置完Active Function之后，我们可以开始建立NN model，这里我们建立一个两层的NN Model：
+#Implementation of the Neural Network Model with Two Layers
 
+#首先要确定我们的神经网络模型的结构(几层几级)
+# Defining the Neural Network Structure
 
-print("sigmoid(-2) = " + str(sigmoid(-2)))
-print("sigmoid(0) = " + str(sigmoid(0)))
-print("sigmoid(3.5) = " + str(sigmoid(3.5)))
-
-
-# ##### __Expected Output__
-# 
-# Note: the values may vary in the last decimal places.
-# 
-# ```Python
-# sigmoid(-2) = 0.11920292202211755
-# sigmoid(0) = 0.5
-# sigmoid(3.5) = 0.9706877692486436
-# ```
-
-# In[14]:
-
-
-w3_unittest.test_sigmoid(sigmoid)
-
-
-# <a name='3'></a>
-# ## 3 - Implementation of the Neural Network Model with Two Layers
-
-# <a name='3.1'></a>
-# ### 3.1 - Defining the Neural Network Structure
-
-# <a name='ex02'></a>
-# ### Exercise 2
-# 
 # Define three variables:
-# - `n_x`: the size of the input layer
-# - `n_h`: the size of the hidden layer (set it equal to 2 for now)
-# - `n_y`: the size of the output layer
+# - `n_x`: the size of the input layer 输入层 也就是dataset_array
+# - `n_h`: the size of the hidden layer (set it equal to 2 for 2层神经网络模型）
+# - `n_y`: the size of the output layer 输出层 也就是Y_hat array
+
+# 这里我们使用 shapes of X and Y to find n_x and n_y:
+# the size of the input layer n_x equals to the size of the input vectors placed in the columns of the array X
+# the outpus for each of the data point will be saved in the columns of the the array Y
 
 # <details>    
 # <summary>
