@@ -288,22 +288,20 @@ print("db2 = " + str(grads["db2"]))
 
 
 # Implement `update_parameters()`.
-# 
-# **Instructions**:
+
 # - Update parameters as shown in $(9)$ (section [2.3](#2.3)):
-# \begin{align}
+
 # W^{[1]} &= W^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[1]} },\\
 # b^{[1]} &= b^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[1]} },\\
 # W^{[2]} &= W^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[2]} },\\
 # b^{[2]} &= b^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[2]} }.\\
-# \end{align}
+
 # - The steps you have to implement are:
-#     1. Retrieve each parameter from the dictionary "parameters" (which is the output of `initialize_parameters()`) by using `parameters[".."]`.
-#     2. Retrieve each derivative from the dictionary "grads" (which is the output of `backward_propagation()`) by using `grads[".."]`.
+#     1. Retrieve each parameter from the dictionary "parameters" 
+        (which is the output of “initialize_parameters()” by using “parameters[".."]”.
+#     2. Retrieve each derivative from the dictionary "grads" 
+        (which is the output of “backward_propagation()”) by using “grads[".."]”.
 #     3. Update parameters.
-
-# In[100]:
-
 
 def update_parameters(parameters, grads, learning_rate=1.2):
     """
@@ -318,28 +316,25 @@ def update_parameters(parameters, grads, learning_rate=1.2):
     parameters -- python dictionary containing updated parameters 
     """
     # Retrieve each parameter from the dictionary "parameters".
-    ### START CODE HERE ### (~ 4 lines of code)
+
     W1 = parameters["W1"]
     b1 = parameters["b1"]
     W2 = parameters["W2"]
     b2 = parameters["b2"]
-    ### END CODE HERE ###
     
     # Retrieve each gradient from the dictionary "grads".
-    ### START CODE HERE ### (~ 4 lines of code)
+
     dW1 = grads["dW1"]
     db1 = grads["db1"]
     dW2 = grads["dW2"]
     db2 = grads["db2"]
-    ### END CODE HERE ###
     
     # Update rule for each parameter.
-    ### START CODE HERE ### (~ 4 lines of code)
+
     W1 = W1 - learning_rate * dW1
     b1 = b1 - learning_rate * db1
     W2 = W2 - learning_rate * dW2
     b2 = b2 - learning_rate * db2
-    ### END CODE HERE ###
     
     parameters = {"W1": W1,
                   "b1": b1,
@@ -347,10 +342,6 @@ def update_parameters(parameters, grads, learning_rate=1.2):
                   "b2": b2}
     
     return parameters
-
-
-# In[101]:
-
 
 parameters_updated = update_parameters(parameters, grads)
 
@@ -360,22 +351,6 @@ print("W2 updated = " + str(parameters_updated["W2"]))
 print("b2 updated = " + str(parameters_updated["b2"]))
 
 
-# ##### __Expected Output__ 
-# Note: the actual values can be different!
-# 
-# ```Python
-# W1 updated = [[ 0.01790427  0.00434496]
-#  [ 0.00099046 -0.01866419]]
-# b1 updated = [[-6.13449205e-07]
-#  [-8.47483463e-07]]
-# W2 updated = [[-0.00238219 -0.00323487]]
-# b2 updated = [[0.00094478]]
-# ```
-
-# In[102]:
-
-
-w3_unittest.test_update_parameters(update_parameters)
 
 
 # <a name='3.4'></a>
