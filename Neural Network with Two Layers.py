@@ -351,10 +351,9 @@ print("W2 updated = " + str(parameters_updated["W2"]))
 print("b2 updated = " + str(parameters_updated["b2"]))
 
 
-
-
-# <a name='3.4'></a>
-# ### 3.4 - Integrate parts 3.1, 3.2 and 3.3 in nn_model()
+在完成Loop：Forward————Cost Function————Derivative Cost Function————Update Parameters之后，
+就可以开始整合完成 nn_model() 神经网络模型了
+#Integrate parts 激活方程，网络结构，初始化参数and LOOP：前推，成本函数LOGLOSS，求导成本函数求最小值，更新参数
 
 # <a name='ex07'></a>
 # ### Exercise 7
