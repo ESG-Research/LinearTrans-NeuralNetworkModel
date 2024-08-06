@@ -159,30 +159,15 @@ print("b2 = " + str(parameters["b2"]))
 
 当我们设置好Active Function，Model Structure，以及W，b的shape之后，我们可以开始设置Loop 循环以实现算法：
 
-# <a name='3.3'></a>
-# ### 3.3 - The Loop
 
-# <a name='ex04'></a>
-# ### Exercise 4
-# 
+#The Loop
+
 # Implement `forward_propagation()`.
-# 
-# **Instructions**:
-# - Look above at the mathematical representation $(7)$ of your classifier (section [2.2](#2.2)):
-# \begin{align}
-# Z^{[1]} &= W^{[1]} X + b^{[1]},\\
-# A^{[1]} &= \sigma\left(Z^{[1]}\right),\\
-# Z^{[2]} &= W^{[2]} A^{[1]} + b^{[2]},\\
-# A^{[2]} &= \sigma\left(Z^{[2]}\right).\\
-# \end{align}
 # - The steps you have to implement are:
 #     1. Retrieve each parameter from the dictionary "parameters" (which is the output of `initialize_parameters()`) by using `parameters[".."]`.
-#     2. Implement Forward Propagation. Compute `Z1` multiplying matrices `W1`, `X` and adding vector `b1`. Then find `A1` using the `sigmoid` activation function. Perform similar computations for `Z2` and `A2`.
+#     2. Implement Forward Propagation. Compute `Z1` multiplying matrices `W1`, `X` and adding vector `b1`. 
+#     Then find `A1` using the `sigmoid` activation function. Perform similar computations for `Z2` and `A2`.
 
-# In[79]:
-
-
-# GRADED FUNCTION: forward_propagation
 
 def forward_propagation(X, parameters):
     """
@@ -196,15 +181,15 @@ def forward_propagation(X, parameters):
     (that simplifies the calculations in the back propagation step)
     """
     # Retrieve each parameter from the dictionary "parameters".
-    ### START CODE HERE ### (~ 4 lines of code)
+
     W1 = parameters["W1"]
     b1 = parameters["b1"]
     W2 = parameters["W2"]
     b2 = parameters["b2"]
-    ### END CODE HERE ###
+
     
     # Implement forward propagation to calculate A2.
-    ### START CODE HERE ### (~ 4 lines of code)
+
     Z1 = np.matmul(W1,X) + b1
     A1 = sigmoid(Z1)
     Z2 = np.matmul(W2,A1) + b2
@@ -219,10 +204,6 @@ def forward_propagation(X, parameters):
              "A2": A2}
     
     return A2, cache
-
-
-# In[80]:
-
 
 A2, cache = forward_propagation(X, parameters)
 
