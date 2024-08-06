@@ -207,9 +207,9 @@ A2, cache = forward_propagation(X, parameters)
 
 print(A2)
 
-
+COST FUNTION:
 # Define a cost function “LOGLOSS”
-# LOGLOSS = L(w,b) = 1/m*SUM(-y*lna - (1-y)ln(1-a))
+# LOGLOSS = L(w,b) = 1/m*SUM(-y*lna - (1-y)*ln(1-a))
 
 
 def compute_cost(A2, Y):
@@ -226,52 +226,20 @@ def compute_cost(A2, Y):
     """
     # Number of examples.
     m = Y.shape[1]
-    
-    ### START CODE HERE ### (~ 2 lines of code)
+   
     logloss = -np.multiply(np.log(A2),Y) - np.multiply(np.log(1-A2),1-Y)
     cost = 1/m*np.sum(logloss)
-    ### END CODE HERE ###
-
+ 
     assert(isinstance(cost, float))
     
     return cost
 
-
-# In[97]:
-
-
 print("cost = " + str(compute_cost(A2, Y)))
 
-
-# ##### __Expected Output__ 
-# Note: the elements of the arrays W1 and W2 maybe be different!
-# 
-# ```Python
-# cost = 0.6931477703826823
-# ```
-
-# In[98]:
-
-
-# Note: 
-# Actual values are not checked here in the unit tests (due to random initialization).
-w3_unittest.test_compute_cost(compute_cost, A2)
-
-
-# Calculate partial derivatives as shown in $(15)$:
-# 
-# \begin{align}
-# \frac{\partial \mathcal{L} }{ \partial W^{[2]} } &= 
-# \frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\\
-# \frac{\partial \mathcal{L} }{ \partial b^{[2]} } &= 
-# \frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1},\\
-# \frac{\partial \mathcal{L} }{ \partial W^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)X^T,\\
-# \frac{\partial \mathcal{L} }{ \partial b^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)\mathbf{1}.\\
-# \end{align}
-
-# In[99]:
-
-
+设置好Cost Function=LOGLOSS之后，我们就要对Cost Function求导来找到最小值：
+# Calculate partial derivatives
+# 这里分层求偏导数，要用到从后往前推，回溯的方法 Backward Propagation：
+# 利用 Gradient grad()来完成：
 def backward_propagation(parameters, cache, X, Y):
     """
     Implements the backward propagation, calculating gradients
@@ -318,9 +286,7 @@ print("dW2 = " + str(grads["dW2"]))
 print("db2 = " + str(grads["db2"]))
 
 
-# <a name='ex06'></a>
-# ### Exercise 6
-# 
+
 # Implement `update_parameters()`.
 # 
 # **Instructions**:
