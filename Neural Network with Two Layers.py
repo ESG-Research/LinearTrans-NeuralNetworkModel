@@ -102,7 +102,7 @@ print("The size of the output layer is: n_y = " + str(n_y))
 # 这里的初始化，主要是初始化 W， b，而且重点是给定这两者Shape，因为X和Y的shape是来源于dataset是固定的，我们的w，b是任意形状，因此要去和X，Y形状匹配
 # 匹配是指运算 W * X，则 W（n，nx）和 X（Xn x m)对应， b （1 x m）和 Y（1 x m）对应
 # 此模型：X1,X2 因此输入层X 是 2 row m column。Hidden Layers因为是2个感受器那就是 2 row。Y_hat是一个输出值，因此是 1 row m columns。
-
+######      n_x = 2 , n_h = 2, n_y = 1      ######
 def initialize_parameters(n_x, n_h, n_y):
     """
     Argument:
@@ -145,10 +145,7 @@ print("b1 = " + str(parameters["b1"]))
 print("W2 = " + str(parameters["W2"]))
 print("b2 = " + str(parameters["b2"]))
 
-
 # ##### __Expected Output__ 
-# Note: the elements of the arrays W1 and W2 maybe be different due to random initialization. You can try to restart the kernel to get the same values.
-# 
 # ```Python
 # W1 = [[ 0.01788628  0.0043651 ]
 #  [ 0.00096497 -0.01863493]]
@@ -158,13 +155,9 @@ print("b2 = " + str(parameters["b2"]))
 # b2 = [[0.]]
 # ```
 
-# In[78]:
 
 
-# Note: 
-# Actual values are not checked here in the unit tests (due to random initialization).
-w3_unittest.test_initialize_parameters(initialize_parameters)
-
+当我们设置好Active Function，Model Structure，以及W，b的shape之后，我们可以开始设置Loop 循环以实现算法：
 
 # <a name='3.3'></a>
 # ### 3.3 - The Loop
