@@ -101,7 +101,7 @@ print("The size of the output layer is: n_y = " + str(n_y))
 #     - Use: `np.zeros((a,b))` to initialize a matrix of shape (a,b) with zeros.
 # 这里的初始化，主要是初始化 W， b，而且重点是给定这两者Shape，因为X和Y的shape是来源于dataset是固定的，我们的w，b是任意形状，因此要去和X，Y形状匹配
 # 匹配是指运算 W * X，则 W（n，nx）和 X（Xn x m)对应， b （1 x m）和 Y（1 x m）对应
-
+# 此模型：X1,X2 因此输入层X 是 2 row m column。Hidden Layers因为是2个感受器那就是 2 row。Y_hat是一个输出值，因此是 1 row m columns。
 
 def initialize_parameters(n_x, n_h, n_y):
     """
