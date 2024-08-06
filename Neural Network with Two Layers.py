@@ -415,17 +415,9 @@ b2 = parameters["b2"]
 
 
 # The final model parameters can be used to find the boundary line and for making predictions. 
-
-# <a name='ex08'></a>
-# ### Exercise 8
-# 
+已经完成了NN model的构建了，我们可以用得到的最优化参数[W1, W2, b]进行预测Prediction
 # Computes probabilities using forward propagation, and make classification to 0/1 using 0.5 as the threshold.
-
-# In[106]:
-
-
-# GRADED FUNCTION: predict
-
+#最后不要忘记设置一个Threshold, 因为这是一个Classification的应用。
 def predict(X, parameters):
     """
     Using the learned parameters, predicts a class for each example in X
@@ -437,16 +429,12 @@ def predict(X, parameters):
     Returns
     predictions -- vector of predictions of our model (blue: 0 / red: 1)
     """
-    
-    ### START CODE HERE ### (≈ 2 lines of code)
+
     A2, cache = forward_propagation(X, parameters)
     predictions = A2 > 0.5
-    ### END CODE HERE ###
+  
     
     return predictions
-
-
-# In[107]:
 
 
 X_pred = np.array([[2, 8, 2, 8], [2, 8, 8, 2]])
