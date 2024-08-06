@@ -117,14 +117,12 @@ def initialize_parameters(n_x, n_h, n_y):
                     W2 -- weight matrix of shape (n_y, n_h)
                     b2 -- bias vector of shape (n_y, 1)
     """
-    
-    ### START CODE HERE ### (~ 4 lines of code)
+
     W1 = np.random.randn(n_h,n_x) * 0.01
     b1 = np.zeros((n_h,1))
     W2 = np.random.randn(n_y,n_h) * 0.01
     b2 = np.zeros((n_y,1))
-    ### END CODE HERE ###
-    
+
     assert (W1.shape == (n_h, n_x))
     assert (b1.shape == (n_h, 1))
     assert (W2.shape == (n_y, n_h))
@@ -210,31 +208,8 @@ A2, cache = forward_propagation(X, parameters)
 print(A2)
 
 
-# ##### __Expected Output__ 
-# Note: the elements of the array A2 maybe be different depending on the initial parameters. If you would like to get exactly the same output, try to restart the Kernel and rerun the notebook.
-# 
-# ```Python
-# [[0.49920157 0.49922234 0.49921223 ... 0.49921215 0.49921043 0.49920665]]
-# ```
-
-# In[82]:
-
-
-# Note: 
-# Actual values are not checked here in the unit tests (due to random initialization).
-w3_unittest.test_forward_propagation(forward_propagation)
-
-
-# Remember, that your weights were just initialized with some random values, so the model has not been trained yet. 
-
-# <a name='ex05'></a>
-# ### Exercise 5
-# 
-# Define a cost function $(8)$ which will be used to train the model:
-# 
-# $$\mathcal{L}\left(W, b\right)  = \frac{1}{m}\sum_{i=1}^{m}  \large\left(\small - y^{(i)}\log\left(a^{(i)}\right) - (1-y^{(i)})\log\left(1- a^{(i)}\right)  \large  \right) \small.$$
-
-# In[91]:
+# Define a cost function “LOGLOSS”
+# LOGLOSS = L(w,b) = 1/m*SUM(-y*lna - (1-y)ln(1-a))
 
 
 def compute_cost(A2, Y):
