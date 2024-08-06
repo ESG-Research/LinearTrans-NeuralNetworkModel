@@ -355,17 +355,8 @@ print("b2 updated = " + str(parameters_updated["b2"]))
 就可以开始整合完成 nn_model() 神经网络模型了
 #Integrate parts 激活方程，网络结构，初始化参数and LOOP：前推，成本函数LOGLOSS，求导成本函数求最小值，更新参数
 
-# <a name='ex07'></a>
-# ### Exercise 7
-# 
-# Build your neural network model in `nn_model()`.
-# 
-# **Instructions**: The neural network model has to use the previous functions in the right order.
+# Build your neural network model in “nn_model()”.
 
-# In[121]:
-
-
-# GRADED FUNCTION: nn_model
 
 def nn_model(X, Y, n_h, num_iterations=10, learning_rate=1.2, print_cost=False):
     """
@@ -383,15 +374,14 @@ def nn_model(X, Y, n_h, num_iterations=10, learning_rate=1.2, print_cost=False):
     n_x = layer_sizes(X, Y)[0]
     n_y = layer_sizes(X, Y)[2]
     
-    # Initialize parameters.
-    ### START CODE HERE ### (~ 1 line of code)
+  1.  # Initialize parameters.
+
     parameters = initialize_parameters(n_x, n_h, n_y)
-    ### END CODE HERE ###
+
     
-    # Loop.
+  2.   # Loop.
     for i in range(0, num_iterations):
          
-        ### START CODE HERE ### (~ 4 lines of code)
         # Forward propagation. Inputs: "X, parameters". Outputs: "A2, cache".
         A2, cache = forward_propagation(X, parameters)
         
@@ -412,9 +402,6 @@ def nn_model(X, Y, n_h, num_iterations=10, learning_rate=1.2, print_cost=False):
     return parameters
 
 
-# In[122]:
-
-
 parameters = nn_model(X, Y, n_h=2, num_iterations=3000, learning_rate=1.2, print_cost=True)
 print("W1 = " + str(parameters["W1"]))
 print("b1 = " + str(parameters["b1"]))
@@ -425,38 +412,6 @@ W1 = parameters["W1"]
 b1 = parameters["b1"]
 W2 = parameters["W2"]
 b2 = parameters["b2"]
-
-
-# ##### __Expected Output__ 
-# Note: the actual values can be different!
-# 
-# ```Python
-# Cost after iteration 0: 0.693148
-# Cost after iteration 1: 0.693147
-# Cost after iteration 2: 0.693147
-# Cost after iteration 3: 0.693147
-# Cost after iteration 4: 0.693147
-# Cost after iteration 5: 0.693147
-# ...
-# Cost after iteration 2995: 0.209524
-# Cost after iteration 2996: 0.208025
-# Cost after iteration 2997: 0.210427
-# Cost after iteration 2998: 0.208929
-# Cost after iteration 2999: 0.211306
-# W1 = [[ 2.14274251 -1.93155541]
-#  [ 2.20268789 -2.1131799 ]]
-# b1 = [[-4.83079243]
-#  [ 6.2845223 ]]
-# W2 = [[-7.21370685  7.0898022 ]]
-# b2 = [[-3.48755239]]
-# ```
-
-# In[123]:
-
-
-# Note: 
-# Actual values are not checked here in the unit tests (due to random initialization).
-w3_unittest.test_nn_model(nn_model)
 
 
 # The final model parameters can be used to find the boundary line and for making predictions. 
